@@ -39,7 +39,7 @@
     "@reduxjs/toolkit": "1.9.1",
     "amount-to-words": "^5.0.0",
     "apexcharts-clevision": "3.28.5",
-    "axios": "1.2.2",
+    "axios": "1.6.0",
     "babel-eslint": "10.1.0",
     "bcryptjs": "^2.4.3",
     "bootstrap-icons": "1.10.3",
