@@ -100,7 +100,7 @@ export default async function handler(req, res) {
                 const refreshToken = generateRefreshToken()
                 let expiryTime = new Date()
 
-                expiryTime.setTime(expiryTime.getTime() + parseInt(tokenExpiry) * 60 * 60 * 1000)
+                expiryTime.setTime(expiryTime.getTime() + parseInt(tokenExpiry) * 60 * 60 * 1000000)
                 expiryTime = expiryTime
 
                 const user_session_body = {
