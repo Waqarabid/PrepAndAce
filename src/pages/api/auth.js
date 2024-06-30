@@ -100,7 +100,7 @@ export default async function handler(req, res) {
                 const refreshToken = generateRefreshToken()
                 let expiryTime = new Date()
 
-                expiryTime.setTime(expiryTime.getTime() + parseInt(tokenExpiry) * 60 * 60 * 1000000)
+                expiryTime.setTime(expiryTime.getTime() + parseInt(tokenExpiry) * 60 * 60 * 1000)
                 expiryTime = expiryTime
 
                 const user_session_body = {
@@ -181,10 +181,10 @@ export default async function handler(req, res) {
                 }
               )
             } else {
-              res.status(401).json({ error: 'Unauthorized!', errorDetail: 'false' })
+              res.status(401).json({ error: 'Unauthorized!' })
             }
           } catch (error) {
-            res.status(401).json({ error: `Unauthorized!`, errorDetail: error })
+            res.status(401).json({ error: 'Unauthorized!' })
           }
         }
         break
