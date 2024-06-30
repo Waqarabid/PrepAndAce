@@ -130,11 +130,17 @@ export default async function handler(req, res) {
       case 'GET':
         {
           try {
+            console.log('a1')
+
             const reqData = Object.keys(req?.body).length > 0 ? req.body : req.query
+            console.log('a2')
             const { token, refreshToken } = reqData
+            console.log('a3')
 
             const verifyToken = jwt.verify(token, KEY)
+            console.log('a4')
             const data = await VerifyToken({ refreshToken, user_id: verifyToken.userId })
+            console.log('a5')
 
             const { dateTime, expiryTime } = data[0]
             const currentDate = Date()
@@ -144,11 +150,15 @@ export default async function handler(req, res) {
             // console.log('expiryTime', new Date(expiryTime))
             const isValid = true //Date(dateTime) < new Date(currentDate) && new Date(currentDate) < new Date(expiryTime)
             console.log('verifyToken', isValid)
+            console.log('a6', verifyToken.userId, isValid)
             if (verifyToken.userId && isValid) {
+              console.log('a7')
+
               const payload = {
                 userId: verifyToken.userId,
                 email: verifyToken.email
               }
+              console.log('a7')
 
               /* Sign token */
               jwt.sign(
@@ -158,11 +168,14 @@ export default async function handler(req, res) {
                   expiresIn: 36000 // 1 Hour in seconds
                 },
                 async (err, token) => {
+                  console.log('a8')
+
                   //const refreshToken = generateRefreshToken()
                   let expiryTime = new Date()
 
-                  expiryTime.setTime(expiryTime.getTime() + parseInt(tokenExpiry) * 60 * 60 * 1000)
-                  expiryTime = expiryTime
+                  expiryTime = expiryTime.setTime(expiryTime.getTime() + parseInt(tokenExpiry) * 60 * 60 * 1000)
+
+                  console.log('a9')
 
                   const user_session_body = {
                     user_id: verifyToken.userId,
@@ -171,7 +184,9 @@ export default async function handler(req, res) {
                     dateTime: new Date()
                   }
 
+                  console.log('a10')
                   addUserSession(user_session_body)
+                  console.log('a11')
 
                   /* Send success with token */
                   res.status(200).json({
@@ -184,6 +199,7 @@ export default async function handler(req, res) {
               res.status(401).json({ error: 'Unauthorized!' })
             }
           } catch (error) {
+            console.log('a12', error)
             res.status(401).json({ error: 'Unauthorized!' })
           }
         }
