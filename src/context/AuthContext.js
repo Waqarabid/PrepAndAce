@@ -36,11 +36,15 @@ const AuthProvider = ({ children }) => {
   const router = useRouter()
 
   const initAuth = async () => {
+    console.log('1')
     const data = decUserData(window.localStorage.getItem('userData'))
+    console.log('2')
     let userData = data && JSON.parse(data)
+    console.log('3', userData)
     if (userData) {
-      //setLoading(false)
+      console.log('4')
 
+      //setLoading(false)
       setLoading(true)
       await axios
         .get(
@@ -48,11 +52,15 @@ const AuthProvider = ({ children }) => {
           { timeout: requestTimeout }
         )
         .then(async response => {
+          console.log('4')
           setLoading(false)
           setUser(userData)
+          console.log('5')
           const data = response.data
+          console.log('6')
 
           if (data.token) {
+            console.log('7')
             userData = { ...userData, token: data.token }
           } else {
             handleLogout()
