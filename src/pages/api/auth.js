@@ -155,7 +155,7 @@ export default async function handler(req, res) {
                 payload,
                 KEY,
                 {
-                  expiresIn: 3600 // 1 Hour in seconds
+                  expiresIn: 36000 // 1 Hour in seconds
                 },
                 async (err, token) => {
                   //const refreshToken = generateRefreshToken()
