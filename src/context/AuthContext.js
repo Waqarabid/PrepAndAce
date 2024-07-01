@@ -74,16 +74,10 @@ const AuthProvider = ({ children }) => {
           }
         })
         .catch(err => {
-     //     console.log('err', err)
-     //     toast.error('1 Session has been expired, Please Re-login', {
-     //       position: 'top-center',
-     //       style: { padding: 10, fontSize: 24, minWidth: 200 },
-     //      duration: 10000
-     //     })
+          console.log('err', err)
 
           setLoading(false)
-          //setUser(userData)
-          //handleLogout()
+          setUser(userData)
         })
     } else {
       setLoading(false)
