@@ -80,9 +80,10 @@ const AuthProvider = ({ children }) => {
         //    style: { padding: 10, fontSize: 24, minWidth: 200 },
         //    duration: 10000
         //  })
-
+          const _data = decUserData(window.localStorage.getItem('userData'))
+ 
           setLoading(false)
-          setUser(data)
+          setUser(_data)
           //handleLogout()
         })
     } else {
