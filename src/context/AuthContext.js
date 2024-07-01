@@ -83,7 +83,7 @@ const AuthProvider = ({ children }) => {
           const _data = decUserData(window.localStorage.getItem('userData'))
  
           setLoading(false)
-          setUser(_data)
+          //setUser(_data)
           //handleLogout()
         })
     } else {
