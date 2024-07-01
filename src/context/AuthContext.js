@@ -82,7 +82,7 @@ const AuthProvider = ({ children }) => {
      //     })
 
           setLoading(false)
-          setUser(userData)
+          //setUser(userData)
           //handleLogout()
         })
     } else {
