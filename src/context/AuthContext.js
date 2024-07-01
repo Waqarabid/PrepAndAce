@@ -59,7 +59,7 @@ const AuthProvider = ({ children }) => {
           const data = response.data
           console.log('6')
 
-          if (data.token) {
+          if (data?.token) {
             console.log('7')
             userData = { ...userData, token: data.token }
           } else {
@@ -74,16 +74,16 @@ const AuthProvider = ({ children }) => {
           }
         })
         .catch(err => {
-          console.log('err', err)
-          toast.error('1 Session has been expired, Please Re-login', {
-            position: 'top-center',
-            style: { padding: 10, fontSize: 24, minWidth: 200 },
-            duration: 10000
-          })
+     //     console.log('err', err)
+     //     toast.error('1 Session has been expired, Please Re-login', {
+     //       position: 'top-center',
+     //       style: { padding: 10, fontSize: 24, minWidth: 200 },
+     //      duration: 10000
+     //     })
 
           setLoading(false)
-
-          handleLogout()
+          setUser(userData)
+          //handleLogout()
         })
     } else {
       setLoading(false)
