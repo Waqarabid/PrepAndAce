@@ -48,7 +48,7 @@
     "cleave.js": "^1.6.0",
     "clipboard-copy": "4.0.1",
     "clsx": "1.2.1",
-    "crypto-js": "^4.1.1",
+    "crypto-js": "^4.2.0",
     "date-fns": "2.29.3",
     "draft-js": "0.11.7",
     "i18next": "22.4.9",
